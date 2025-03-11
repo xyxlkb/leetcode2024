@@ -10,14 +10,11 @@ public class lc40_combinationSum2 {
 }
 
 class Solution40 {
-    List<List<Integer>> res;
+    List<List<Integer>> res = new ArrayList<>();
     int[] Candidates;
     public List<List<Integer>> combinationSum2(int[] candidates, int target) {
-        res = new ArrayList<>();
-        Candidates = new int[candidates.length];
-        for (int i = 0; i < candidates.length; i++) {
-            Candidates[i] = candidates[i];
-        }
+        Arrays.sort(candidates);
+        Candidates = candidates;
         backTrack(target, 0, 0, new ArrayList<>());
 
         Set<List<Integer>> uniqueSet = new HashSet<>();
@@ -43,7 +40,7 @@ class Solution40 {
 
         curSum += Candidates[curPos];
         curRes.add(Candidates[curPos]);
-        backTrack(target, curPos + 1, curSum, curRes);
+        backTrack(target, curPos+1, curSum, curRes);
         curSum -= Candidates[curPos];
         curRes.remove(curRes.size() - 1);
         backTrack(target, curPos+1, curSum, curRes);
