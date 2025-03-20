@@ -16,7 +16,7 @@ class Solution349 {
     public int[] intersection(int[] nums1, int[] nums2) {
         int len1 = nums1.length;
         int len2 = nums2.length;
-        Arrays.sort(nums1);
+        Arrays.sort(nums1); ///两个都排序，这样就能按顺序找了
         Arrays.sort(nums2);
         List<Integer> res = new ArrayList<>();
 

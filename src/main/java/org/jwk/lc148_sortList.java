@@ -20,16 +20,7 @@ public class lc148_sortList {
         so.printList(head);
     }
 }
-/**
- * Definition for singly-linked list.
- * public class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode() {}
- *     ListNode(int val) { this.val = val; }
- *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
- * }
- */
+
 class Solution148 {
     public ListNode sortList(ListNode head) {
         // 如果链表为空或只有一个元素，则不需要排序，直接返回
@@ -37,7 +28,7 @@ class Solution148 {
             return head;
         }
 
-        // 使用快慢指针法找到链表的中间节点
+        // 使用快慢指针法找到链表的中间节点，然后分成两个链表，分别调用
         ListNode mid = getMiddle(head);
         ListNode rightHalf = mid.next;
         mid.next = null;

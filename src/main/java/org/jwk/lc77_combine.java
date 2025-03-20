@@ -15,20 +15,20 @@ class Solution77 {
     List<List<Integer>> result = new ArrayList<>(); //记录结果
     LinkedList<Integer> path = new LinkedList<>(); //记录路径
 
-    public void backtracking(int n, int k, int startIndex) {
+    public List<List<Integer>> combine(int n, int k) {
+        backTrack(n, k, 1);
+        return result;
+    }
+
+    public void backTrack(int n, int k, int startIndex) {
         if (path.size() == k) {
             result.add(new ArrayList<>(path));
             return;
         }
         for (int i = startIndex; i <= n; i++) {
             path.add(i); //选中i，加入路径
-            backtracking(n, k, i + 1);
+            backTrack(n, k, i + 1);
             path.removeLast(); //把i取出来，恢复现场
         }
-    }
-
-    public List<List<Integer>> combine(int n, int k) {
-        backtracking(n, k, 1);
-        return result;
     }
 }

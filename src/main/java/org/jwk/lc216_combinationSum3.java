@@ -7,11 +7,10 @@ public class lc216_combinationSum3 {
 }
 
 class Solution216 {
-    List<List<Integer>> res;
+    List<List<Integer>> res = new ArrayList<>();
 
     //从1～9中选k个数字，让他们的和为n，把所有可能方法返回
     public List<List<Integer>> combinationSum3(int k, int n) {
-        res = new ArrayList<>();
         backTrack(k, n, 1, new ArrayList<>());
         return res;
     }

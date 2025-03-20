@@ -16,11 +16,6 @@ class Solution1278 {
         int n = s.length();
         minStepsToPalindrome = new int[n][n];
         initminStepsToPalindrome(s);
-/*        for (int i=0; i<n; i++) { //检测minStepsToPalindrome数组
-            for (int j=0; j<n; j++)
-                System.out.print(minStepsToPalindrome[i][j] + " ");
-            System.out.println();
-        }*/
 
         minSubStringToPalindrome = new int[n][k+1];
         initminSubStringToPalindrome(s, k);
@@ -36,12 +31,6 @@ class Solution1278 {
                 }
             }
         }
-/*        for (int i=0; i<n; i++) { //检测minSubStringToPalindrome
-            for (int j=1; j<=k; j++)
-                System.out.print(minSubStringToPalindrome[i][j] + " ");
-            System.out.println();
-        }*/
-
         return minSubStringToPalindrome[n-1][k];
     }
 

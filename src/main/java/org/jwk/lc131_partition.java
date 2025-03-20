@@ -28,7 +28,7 @@ class Solution131 {
         }
 
         for (int right=left; right<s.length(); right++) {
-            if (isHuiWen(s, left, right)) {
+            if (isHuiWen(s, left, right)) { //把从left开始的所有可能的回文串都试一次，加入结果
                 curRes.add(s.substring(left, right+1));
                 backTrack(s, right+1, curRes);
                 curRes.remove(curRes.size()-1); //把最后一个删掉，恢复现场

@@ -19,54 +19,43 @@ public class lc207_canFinish {
 }
 
 class Solution207 {
-//    private boolean[][] path;
-    private List<List<Integer>> adjacencyList;
-    private boolean[] visited;
-    private boolean havecircle = false;
-    private int n;
+    List<List<Integer>> edges = new ArrayList<>();
+    int[] visited; //0：未访问  1：访问中 2：已访问
+    // 需要3种状态是为了避免重复访问，如果只有 2 种状态，无法区分一个节点是 正在访问 还是 已经访问完毕，从而导致误判。
+    // 因为后面访问的节点再到前面访问过的节点，也很正常
+    boolean valid = true;
 
     public boolean canFinish(int numCourses, int[][] prerequisites) {
-        n = numCourses;
-        visited = new boolean[n];
-//        path = new boolean[n][n];
-//        initialisepath();
-        adjacencyList = new ArrayList<>();
-        for (int i = 0; i < n; i++)
-            adjacencyList.add(new ArrayList<>());
-        for (int[] i : prerequisites)
-//                path[i[0]][i[1]] = true;
-            adjacencyList.get(i[0]).add(i[1]);
-        for (int i=0; i<n; i++){
-            if(havecircle)
-                return false;
-//            initialisevisited(); //每次进入深度搜索前，先标记所有都没访问过 不用标记！因为每次返回的时候会取消访问标记
-            dfs(i);
+        for (int i = 0; i < numCourses; ++i) {
+            edges.add(new ArrayList<>());
         }
-        return !havecircle; //如果每一次深搜之后都没有环的话，就说明能上完课
+        // 每一个点都对应一个list，代表他能到达的所有点
+        for (int[] info : prerequisites) { //从1到0有一条路径（学习0之前必须先学习1）
+            edges.get(info[1]).add(info[0]);
+        }
+        visited = new int[numCourses];
+
+        for (int i = 0; i < numCourses && valid; ++i) {
+            if (visited[i] == 0) {
+                dfs(i);
+            }
+        }
+        return valid;
     }
 
-    public void dfs(int t) {
-        if (havecircle) //如果已经检测到有环了，就不用任何操作直接返回
-            return;
-        if (visited[t]) { //如果t被访问过了，说明有环了
-            havecircle = true;
-            return;
+    public void dfs(int u) {
+        visited[u] = 1;
+        for (int v: edges.get(u)) {
+            if (visited[v] == 0) {
+                dfs(v);
+                if (!valid) {
+                    return;
+                }
+            } else if (visited[v] == 1) {
+                valid = false;
+                return;
+            }
         }
-        visited[t] = true; //把当前点标记为访问过
-        for(int i : adjacencyList.get(t)){ //深度搜索每一个t能到的点
-//            if (path[t][i])
-            dfs(i);
-        }
-        visited[t] = false; //这次深度搜索结束，去别的路径，又把当前点标记为没访问过，防止别的环串了
+        visited[u] = 2;
     }
-
-//    private void initialisepath(){
-//        for (int i=0; i<n; i++)
-//            for (int j=0; j<n; j++)
-//                path[i][j] = false;
-//    }
-//    private void initialisevisited(){
-//        for (int i=0; i<n; i++)
-//            visited[i] = false;
-//    }
 }

@@ -20,7 +20,7 @@ class MedianFinder {
     }
 
     public void addNum(int num) {
-        if (nums.size() == 0) {
+        if (nums.isEmpty()) {
             nums.add(num);
             return;
         }
