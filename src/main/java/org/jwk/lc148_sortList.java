@@ -1,13 +1,5 @@
 package org.jwk;
-/**
- * Definition for singly-linked list. */
-class ListNode {
-    int val;
-    ListNode next;
-    ListNode() {}
-    ListNode(int val) { this.val = val; }
-    ListNode(int val, ListNode next) { this.val = val; this.next = next; }
-}
+
 // 链表排序，二分法
 public class lc148_sortList {
     public static void main(String[] args) {
