@@ -1,18 +1,17 @@
 package org.jwk;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Main {
     public static void main(String[] args) {
-        List<Integer> list = new ArrayList<>();
-        list.add(1);
-        list.add(2);
-        list.add(3);
-        list.add(2,100);
-        for (int i : list) {
+        Integer[] arr = {1, 2, 3, 4, 5}; // 初始化数组
+
+        Arrays.sort(arr); // 从小到大排序
+        Arrays.sort(arr, Collections.reverseOrder());
+
+        for (int i : arr) {
             System.out.println(i);
         }
 

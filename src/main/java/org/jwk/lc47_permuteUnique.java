@@ -18,7 +18,14 @@ public class lc47_permuteUnique {
 class Solution47 {
     int n;
     boolean[] used;
-    List<List<Integer>> res;
+    List<List<Integer>> res = new ArrayList<>();
+    public List<List<Integer>> permuteUnique(int[] nums) {
+        n = nums.length;
+        used = new boolean[n];
+        Arrays.sort(nums);
+        TraceBack(nums, n, new ArrayList<>());
+        return res;
+    }
     public void TraceBack(int[] nums, int remainingCount, ArrayList<Integer> cur) { // remainingCount means how many numbers need to be found
         if (remainingCount == 0) { //if there is enough numbers
             res.add(new ArrayList<>(cur));
@@ -35,13 +42,5 @@ class Solution47 {
             used[i] = false;
             cur.remove(cur.size()-1);
         }
-    }
-    public List<List<Integer>> permuteUnique(int[] nums) {
-        n = nums.length;
-        res = new ArrayList<List<Integer>>();
-        used = new boolean[n];
-        Arrays.sort(nums);
-        TraceBack(nums, n, new ArrayList<>());
-        return res;
     }
 }

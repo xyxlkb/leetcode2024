@@ -12,9 +12,10 @@ class Solution45 {
             dp[i] = n+1;
         }
 
+        // 从前往后，更新每一个可以跳到的位置的最小消耗
         for (int i=0; i<n; i++) {
             for (int step=0; step<=nums[i]; step++) {
-                if (i+step>=n)
+                if (i+step >= n)
                     break;
                 dp[i+step] = Math.min(dp[i+step], dp[i]+1);
             }

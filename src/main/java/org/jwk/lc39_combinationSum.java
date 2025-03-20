@@ -11,9 +11,8 @@ public class lc39_combinationSum {
 }
 
 class Solution39 {
-    List<List<Integer>> res;
+    List<List<Integer>> res = new ArrayList<>();
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
-        res = new ArrayList<>();
         backTrack(candidates, target, 0, 0, new ArrayList<>());
         return res;
     }
@@ -28,7 +27,7 @@ class Solution39 {
      */
     private void backTrack(int[] candidates, int target, int curPos, int curSum, List<Integer> curRes) {
         if (curSum == target) {
-            res.add(new ArrayList<>(curRes)); // 注意：需要新建一个 ArrayList
+            res.add(new ArrayList<>(curRes)); // 注意：需要新建一个 ArrayList，是引用，后面会修改内容
             return;
         }
         if (curSum > target)
