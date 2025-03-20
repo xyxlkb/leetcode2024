@@ -118,20 +118,15 @@ public class RoleGovernDetail {
         try {
             for (Field field : this.getClass().getDeclaredFields()) {
                 field.setAccessible(true); // 允许访问私有字段
-
-                Schema schema = field.getAnnotation(Schema.class);
-                if (schema == null || schema.description().isEmpty()) continue;
-
                 Object value = field.get(this);
-                String description = schema.description()
-                        .replaceAll("：.*", "")  // 去除中文冒号后的说明
-                        .replaceAll("\\(.*?\\)", "") // 移除括号内容
-                        .trim();
+
+                // 直接使用字段名作为 JSON 的 key
+                String key = field.getName();
 
                 if (value != null) {
-                    json.putPOJO(description, value);
+                    json.putPOJO(key, value);
                 } else {
-                    json.putNull(description);
+                    json.putNull(key);
                 }
             }
         } catch (IllegalAccessException e) {
