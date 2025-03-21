@@ -9,8 +9,7 @@ package org.jwk;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import org.springframework.beans.BeanUtils;
-import org.springframework.util.StringUtils;
+
 
 import java.time.LocalDateTime;
 
