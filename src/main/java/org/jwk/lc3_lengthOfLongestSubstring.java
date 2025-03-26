@@ -17,12 +17,12 @@ class Solution3 {
         boolean[] used = new boolean[256];
         int left = 0, right = 0;
         while (right < n) {
-            if (!used[(int)s.charAt(right)]) {
-                used[(int)s.charAt(right)] = true;
+            if (!used[s.charAt(right)]) {
+                used[s.charAt(right)] = true;
                 maxLength = Math.max(maxLength, right - left + 1);
                 right++;
             } else {
-                used[(int)s.charAt(left)] = false;
+                used[s.charAt(left)] = false; //如果right这个字符用过，就把left++，直到right没用过为止
                 left++;
             }
         }
