@@ -5,14 +5,13 @@ package org.jwk;
  */
 
 
-
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-
-
+import lombok.Data;
 import java.time.LocalDateTime;
 
+@Data
 public class EventDTO {
     private Long id;
 
@@ -74,140 +73,7 @@ public class EventDTO {
     @Schema(description = "分数")
     private Double score;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public @NotNull(message = "流程模版ID不能为空") Long getTmplId() {
         return tmplId;
     }
-
-    public void setTmplId(@NotNull(message = "流程模版ID不能为空") Long tmplId) {
-        this.tmplId = tmplId;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getGuid() {
-        return guid;
-    }
-
-    public void setGuid(String guid) {
-        this.guid = guid;
-    }
-
-    public String getMemo() {
-        return memo;
-    }
-
-    public void setMemo(String memo) {
-        this.memo = memo;
-    }
-
-    public String getDept() {
-        return dept;
-    }
-
-    public void setDept(String dept) {
-        this.dept = dept;
-    }
-
-    public String getSubject() {
-        return subject;
-    }
-
-    public void setSubject(String subject) {
-        this.subject = subject;
-    }
-
-    public String getCreator() {
-        return creator;
-    }
-
-    public void setCreator(String creator) {
-        this.creator = creator;
-    }
-
-    public LocalDateTime getEventTime() {
-        return eventTime;
-    }
-
-    public void setEventTime(LocalDateTime eventTime) {
-        this.eventTime = eventTime;
-    }
-
-    public LocalDateTime getDetectTime() {
-        return detectTime;
-    }
-
-    public void setDetectTime(LocalDateTime detectTime) {
-        this.detectTime = detectTime;
-    }
-
-    public String getPriority() {
-        return priority;
-    }
-
-    public void setPriority(String priority) {
-        this.priority = priority;
-    }
-
-    public String getRisk() {
-        return risk;
-    }
-
-    public void setRisk(String risk) {
-        this.risk = risk;
-    }
-
-    public String getScope() {
-        return scope;
-    }
-
-    public void setScope(String scope) {
-        this.scope = scope;
-    }
-
-    public Long getCategory() {
-        return category;
-    }
-
-    public void setCategory(Long category) {
-        this.category = category;
-    }
-
-    public Object getPayload() {
-        return payload;
-    }
-
-    public void setPayload(Object payload) {
-        this.payload = payload;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    public Double getScore() {
-        return score;
-    }
-
-    public void setScore(Double score) {
-        this.score = score;
-    }
-
 }
